@@ -1,0 +1,18 @@
+//
+// Prefix header for all source files of the 'MakeysSDKDemo' target in the 'MakeysSDKDemo' project
+//
+
+
+#ifndef __IPHONE_8_0
+#warning "This project uses features only available in iOS SDK 8.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+#import "MakeysSDK.h"
+
+#define kAppKey         @"SampleClientId"
+#define kRedirectURI    @"http://your_callback_uri"
+
+#endif
+
