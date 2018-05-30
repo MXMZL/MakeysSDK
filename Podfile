@@ -4,6 +4,5 @@ use_frameworks!
 target 'MakeysSDKDemo' do
     pod 'AFNetworking'
     pod 'Masonry'
-    pod 'MBProgressHUD'
 end
 

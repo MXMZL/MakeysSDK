@@ -120,11 +120,10 @@
             NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"desc"]];
             [self showFailResponseAlert:message];
         }
-        
-        
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSString *message = [NSString stringWithFormat:@"%@",error];
-        [self showFailResponseAlert:error];
+        [self showFailResponseAlert:message];
     }];
 }
 

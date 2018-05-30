@@ -13,7 +13,6 @@
 		DAA225FD20BBE60F0094BCF3 /* AuthorizeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA225FC20BBE60F0094BCF3 /* AuthorizeLoginViewController.m */; };
 		DAA2261420BBE69E0094BCF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAA2260F20BBE69E0094BCF3 /* Assets.xcassets */; };
 		DAA2261520BBE69E0094BCF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAA2261020BBE69E0094BCF3 /* LaunchScreen.storyboard */; };
-		DAA2261620BBE69E0094BCF3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAA2261220BBE69E0094BCF3 /* Info.plist */; };
 		DAA2261720BBE69E0094BCF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA2261320BBE69E0094BCF3 /* main.m */; };
 		DAE7036020BD08020002DA90 /* libMakeysSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE7035E20BD08020002DA90 /* libMakeysSDK.a */; };
 /* End PBXBuildFile section */
@@ -185,7 +184,6 @@
 			files = (
 				DAA2261420BBE69E0094BCF3 /* Assets.xcassets in Resources */,
 				DAA2261520BBE69E0094BCF3 /* LaunchScreen.storyboard in Resources */,
-				DAA2261620BBE69E0094BCF3 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,13 +198,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MakeysSDKDemo/Pods-MakeysSDKDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,8 +395,6 @@
 					"-framework",
 					"\"AFNetworking\"",
 					"-framework",
-					"\"MBProgressHUD\"",
-					"-framework",
 					"\"Masonry\"",
 					"-ObjC",
 				);
@@ -429,8 +423,6 @@
 					"$(inherited)",
 					"-framework",
 					"\"AFNetworking\"",
-					"-framework",
-					"\"MBProgressHUD\"",
 					"-framework",
 					"\"Masonry\"",
 					"-ObjC",
