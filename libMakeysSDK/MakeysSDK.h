@@ -97,12 +97,6 @@ typedef NS_ENUM(NSInteger, MakeysSDKLanguageType)
  Makeys客户端程序和第三方应用之间传输数据信息的基类
  */
 @interface MakeysBaseRequest : NSObject
-/**
- 当用户没有安装Makeys客户端程序时是否提示用户打开Makeys安装页面
- 
- 如果设置为YES，当用户未安装Makeys时会弹出Alert询问用户是否要打开Makeys App的安装页面。默认为YES
- */
-@property (nonatomic, assign) BOOL shouldOpenMakeysAppInstallPageIfNotInstalled;
 
 /**
  自定义信息字符串，用于数据传输过程中校验相关的上下文环境数据
