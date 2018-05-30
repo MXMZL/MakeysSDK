@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, MakeysSDKLanguageType)
 + (BOOL)isMakeysAppInstalled;
 
 /**
- 获取当前Makeys的版本号
+ 获取当前MakeysSDK的版本号
  @return 当前MakeysSDK的版本号
  */
 + (NSString *)getSDKVersion;
@@ -70,8 +70,8 @@ typedef NS_ENUM(NSInteger, MakeysSDKLanguageType)
  
  @param request 具体的发送请求
  
- @see [MakeysSDKDelegate didReceiveWeiboResponse:responseStatusCode:]
- @see WBBaseResponse
+ @see [MakeysSDKDelegate didReceiveMakeysResponse:responseStatusCode:]
+ @see MakeysBaseRequest
  */
 + (BOOL)sendRequest:(MakeysBaseRequest *)request;
 
@@ -143,20 +143,16 @@ typedef NS_ENUM(NSInteger, MakeysSDKLanguageType)
 @interface MakeysAuthorizeRequest : MakeysBaseRequest
 
 /**
- Makeys开放平台第三方应用授权回调页地址，默认为`http://`
+ Makeys开放平台第三方应用授权回调页地址
  
- 参考
- 
- @warning 必须保证和在Makeys开放平台应用管理界面配置的“授权回调页”地址一致，如未进行配置则默认为`http://`
+ @warning 必须保证和在Makeys开放平台应用管理界面配置的“授权回调页”地址一致
  @warning 不能为空，长度小于1K
  */
 @property (nonatomic, strong) NSString *redirectURI;
 
 /**
- Makeys开放平台第三方应用scope，多个scrope用逗号分隔
- 
- 参考
- 
+ 以空格分隔的权限列表，若不传递此参数，代表请求用户的默认权限
+ 参考开放平台权限列表
  @warning 长度小于1K
  */
 @property (nonatomic, strong) NSString *scope;
@@ -190,6 +186,8 @@ typedef NS_ENUM(NSInteger, MakeysSDKLanguageType)
 /**
  响应状态码
  
+ 参考：访问开发文档->OAuth2.0->开发相关资源->返回状态码说明
+ 
  第三方应用可以通过errorCode判断请求的处理结果
  */
 @property (nonatomic, strong) NSString *errorCode;
@@ -197,6 +195,8 @@ typedef NS_ENUM(NSInteger, MakeysSDKLanguageType)
 /**
  响应状态码描述
  
+ 参考：访问开发文档->OAuth2.0->开发相关资源->返回状态码说明
+
  第三方应用可以通过errorCodeDescription判断请求的显示结果
  */
 @property (nonatomic, strong) NSString *errorCodeDescription;

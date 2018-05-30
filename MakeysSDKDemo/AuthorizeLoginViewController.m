@@ -61,11 +61,10 @@
 }
 
 #pragma mark - Private Methods
-- (void)clickLogin:(id)sender
-{
+- (void)clickLogin:(id)sender {
+    
     MakeysAuthorizeRequest *request = [MakeysAuthorizeRequest request];
     request.state = @"Verification";
-    request.scope = @"user_info";
     request.redirectURI = kRedirectURI;
     [MakeysSDK sendRequest:request];
 }
@@ -85,11 +84,19 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
-        [self gotoAuthorizeLogoutViewController:responseObject];
+        NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == 20000) {
+            [self gotoAuthorizeLogoutViewController:responseObject];
+        }
+        else {
+            NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"desc"]];
+            [self showFailResponseAlert:message];
+        }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        [self showFailResponseAlert:error];
+        NSString *message = [NSString stringWithFormat:@"%@",error];
+        [self showFailResponseAlert:message];
     }];
 }
 
@@ -101,10 +108,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)showFailResponseAlert:(NSError *)error {
+- (void)showFailResponseAlert:(NSString *)error {
     
-    NSString *message = [NSString stringWithFormat:@"%@",error];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请求失败" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请求失败" message:error preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"确定"
                                                            style:UIAlertActionStyleCancel
                                                          handler:nil];

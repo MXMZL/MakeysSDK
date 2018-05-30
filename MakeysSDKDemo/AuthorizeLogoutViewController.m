@@ -111,11 +111,19 @@
         
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-
-        [self gotoAuthorizeLoginViewController:responseObject];
+        
+        NSInteger code = [responseObject[@"code"] integerValue];
+        if (code == 20000) {
+            [self gotoAuthorizeLoginViewController:responseObject];
+        }
+        else {
+            NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"desc"]];
+            [self showFailResponseAlert:message];
+        }
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        NSString *message = [NSString stringWithFormat:@"%@",error];
         [self showFailResponseAlert:error];
     }];
 }
@@ -125,10 +133,9 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
-- (void)showFailResponseAlert:(NSError *)error {
+- (void)showFailResponseAlert:(NSString *)error {
     
-    NSString *message = [NSString stringWithFormat:@"%@",error];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请求失败" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请求失败" message:error preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"确定"
                                                            style:UIAlertActionStyleCancel
                                                          handler:nil];
