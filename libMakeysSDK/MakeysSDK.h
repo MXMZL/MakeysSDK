@@ -14,8 +14,8 @@
 
 typedef NS_ENUM(NSInteger, MakeysSDKResponseStatusCode)
 {
-    MakeysSDKResponseStatusCodeSuccess               = 0,//成功
-    MakeysSDKResponseStatusCodeUserCancel             = -1,//用户取消
+    MakeysSDKResponseStatusCodeSuccess               = 0,//授权成功
+    MakeysSDKResponseStatusCodeUserCancel            = -1,//用户取消
     MakeysSDKResponseStatusCodeAuthDeny              = -2,//授权失败
     MakeysSDKResponseStatusCodeUserCancelInstall     = -3,//用户取消安装Makeys客户端
 };
@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, MakeysSDKLanguageType)
 /**
  处理Makeys客户端程序通过URL启动第三方应用时传递的数据
  
- 需要在 application:openURL:sourceApplication:annotation:或者application:handleOpenURL中调用
+ 需要在 application:openURL:sourceApplication:annotation:、application:handleOpenURL或者application:openURL:options:中调用
  @param url 启动第三方应用的URL
  @param delegate MakeysSDKDelegate对象，用于接收Makeys触发的消息
  @see MakeysSDKDelegate
