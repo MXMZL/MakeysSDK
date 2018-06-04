@@ -64,6 +64,7 @@
 - (void)clickLogin:(id)sender {
     
     MakeysAuthorizeRequest *request = [MakeysAuthorizeRequest request];
+    request.scope = @"user_info";
     request.state = @"Verification";
     request.redirectURI = kRedirectURI;
     [MakeysSDK sendRequest:request];
